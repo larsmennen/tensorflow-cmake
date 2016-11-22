@@ -33,10 +33,10 @@ cc_binary(
 )
 ```
 This specifies a new build rule, producing `libtensorflow_all.so`, that includes all the required dependencies for integration
-with a C++ project. Build the shared library and copy it to `/usr/local/lib` as follows:
+with a C++ project. Build the shared library and copy it to `/usr/local/lib` as follows (this is with GPU support):
 ```bash
-./configure      # Note that this requires user input
-bazel build tensorflow:libtensorflow_all.so
+./configure      # Note that this requires user input, make sure you select Y when asked for GPU support
+bazel build -c opt --config=cuda tensorflow:libtensorflow_all.so
 sudo cp bazel-bin/tensorflow/libtensorflow_all.so /usr/local/lib
 ```
 Copy the source to `/usr/local/include/google` and remove unneeded items:
