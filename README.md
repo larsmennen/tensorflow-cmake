@@ -19,7 +19,7 @@ sudo apt-get install python-numpy swig python-dev python-wheel      # TensorFlow
 git clone https://github.com/tensorflow/tensorflow                  # TensorFlow
 ```
 This specifies a new build rule, producing `libtensorflow_all.so`, that includes all the required dependencies for integration
-with a C++ project. Build the shared library and copy it to `/usr/local/lib` as follows:
+with a C++ project. Build the shared library and copy it to `/usr/local/lib` as follows (this is with GPU support):
 ```bash
 ./configure      # Note that this requires user input
 bazel build -c opt --config=cuda tensorflow:libtensorflow_cc.so
