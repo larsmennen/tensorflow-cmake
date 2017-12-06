@@ -53,7 +53,7 @@ find_protobuf () {
     # defs here
     ANY="[^\)]*"
     ANY_NO_QUOTES="[^\)\\\"]*"
-    HTTP_HEADER="native.http_archive\(\s"
+    HTTP_HEADER="(native.http_archive|patched_http_archive)\(\s"
     NAME_START="name\s*=\s*\\\""
     QUOTE_START="\s*=\s*\\\""
     QUOTE_END="\\\"\s*,\s*"
@@ -64,7 +64,7 @@ find_protobuf () {
     else
 	# set name and reset the number
 	# we want to repeat each method below for both names
-	PROTOBUF_NAME="${NAME_START}com_google_protobuf${QUOTE_END}"
+	PROTOBUF_NAME="${NAME_START}protobuf_archive${QUOTE_END}"
 	ATTEMPT_NUMBER=$((${ATTEMPT_NUMBER} - 2))
     fi
     
